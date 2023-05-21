@@ -3,7 +3,6 @@ package gov.iti.jets.testing.web.controllers;
 import gov.iti.jets.testing.domain.User;
 import gov.iti.jets.testing.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -40,5 +39,17 @@ public class UserController {
         userService.addUserPhoto(id, image);
         return ResponseEntity.ok("added photo");
     }
+
+    @DeleteMapping("/private/users/{id}")
+    public ResponseEntity<String> deleteUser(@PathVariable Long id) {
+        userService.deleteUser(id);
+        return ResponseEntity.ok("deleted successfully");
+    }
+
+//    @PostMapping("/register")
+//    public ResponseEntity<String> register(@RequestBody User user, MultipartFile image) {
+//        userService.register(user, image);
+//        return ResponseEntity.ok("added photo");
+//    }
 
 }

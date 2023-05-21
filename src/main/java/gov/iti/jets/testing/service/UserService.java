@@ -12,4 +12,6 @@ public interface UserService {
     User addUser(User user);
 
     void addUserPhoto(Long id, MultipartFile image);
+
+    void deleteUser(Long id);
 }
