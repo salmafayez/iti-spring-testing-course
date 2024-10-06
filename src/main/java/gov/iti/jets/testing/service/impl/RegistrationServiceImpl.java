@@ -33,14 +33,19 @@ public class RegistrationServiceImpl implements RegistrationService {
     @Transactional
     public void register(RegistrationDto registrationDto) {
 
+        //2 test user exist
         User user = getUser(registrationDto.getUserId());
+        //3 test event exist
         Event even = getEvent(registrationDto.getEventId());
+        // tickets exist
         Ticket ticket = getTicket(registrationDto.getEventId(), registrationDto.getTicketType());
 
+        // 1 if the quantity less than zero
         if (ticket.getQuantity() <= 0) {
-            new RuntimeException("there is no available tickets");
+           throw new RuntimeException("there is no available tickets");
         }
 
+        // 5 happy senario
         ticket.setQuantity(ticket.getQuantity() - 1);
         ticketRepository.save(ticket);
 
@@ -60,18 +65,18 @@ public class RegistrationServiceImpl implements RegistrationService {
         return registration;
     }
 
-    private Ticket getTicket(Long id, String tickType) {
+    public Ticket getTicket(Long id, String tickType) {
         return ticketRepository
                 .findTicketByTypeAndEvent_Id(TicketType.getByName(tickType), id)
                 .orElseThrow(() -> new RuntimeException("no tickets attached to this event"));
     }
 
-    private Event getEvent(Long id) {
+    public Event getEvent(Long id) {
         return eventRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("no event with this id"));
     }
 
-    private User getUser(Long id) {
+    public User getUser(Long id) {
         return userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("no user with this id"));
     }
