@@ -1,22 +1,11 @@
 package gov.iti.jets.testing;
 
-import gov.iti.jets.testing.domain.*;
-import gov.iti.jets.testing.domain.enums.TicketType;
-import gov.iti.jets.testing.domain.enums.UserRole;
-import gov.iti.jets.testing.persistence.EventRepository;
-import gov.iti.jets.testing.persistence.RegistrationRepository;
-import gov.iti.jets.testing.persistence.TicketRepository;
-import gov.iti.jets.testing.persistence.UserRepository;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-
-import java.time.LocalDateTime;
 
 @SpringBootApplication
 public class SpringTestingApplication {
-
+    
     public static void main(String[] args) {
         SpringApplication.run(SpringTestingApplication.class, args);
     }
