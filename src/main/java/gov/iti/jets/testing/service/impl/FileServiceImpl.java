@@ -19,6 +19,7 @@ import java.time.Duration;
 @Service
 public class FileServiceImpl implements FileService {
 
+    //Web Client
     private final RestTemplate restTemplate;
 
     public FileServiceImpl(RestTemplateBuilder restTemplateBuilder) {
@@ -31,7 +32,6 @@ public class FileServiceImpl implements FileService {
 
     @Override
     public String saveFile(File file, String URL) {
-
         HttpHeaders headers = new HttpHeaders();
         MultiValueMap<String, Object> body = new LinkedMultiValueMap<>();
         body.add("file", new FileSystemResource(file));
@@ -39,8 +39,6 @@ public class FileServiceImpl implements FileService {
 
         HttpEntity<MultiValueMap<String, Object>> requestEntity =
                 new HttpEntity<>(body, headers);
-
-//        RestTemplate restTemplate = new RestTemplate();
 
         ObjectNode body1 = restTemplate
                 .exchange(URL, HttpMethod.POST, requestEntity, ObjectNode.class)

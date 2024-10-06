@@ -20,9 +20,6 @@ public class SpringTestingApplication {
     public static void main(String[] args) {
         SpringApplication.run(SpringTestingApplication.class, args);
     }
-}
-
-
 //    @Bean
 //    CommandLineRunner seedData(UserRepository userRepository, EventRepository eventRepository,
 //                               TicketRepository ticketRepository, RegistrationRepository registrationRepository) {
@@ -162,13 +159,47 @@ public class SpringTestingApplication {
 //
 //        };
 //    }
-//}
-//
+
+}
+
+
+ /*
+    DB
+
+    2. Autowire a repository and don't include the H2 database to throw the exception
+    3. Disable the automatic configuration of the database
+    4. Try to autowire a controller to see that it isn't instantiated
+    5. Explore the @DataJpaTest annotation
+    6. Add the H2 dependency and try to run the migration scripts to throw exception
+    6. Disable using the scripts and using the mapping from the entities
+    7. See the disadvantages of using the in memory database
+    8. add the test containers dependency and instantiate the Container
+    9. change the container tag
+    9. try to run and see the logs of the container
+    10. make a break point to see the containers
+    11. see the context sharing between the tests
+    12. extract the container to an abstract class
+*/
+
 
 /*
-flyway is used to migrate your database from a version to another based on scripts
-it is like a version control for your database
+    WEB
 
-when enabling the ddl creation it runs the migration scripts first then it alters depends on the JPA entities
-I don't know what enableJpaRepositories do ??
+    1. Explore the annotation
+    2. autowire the controller and check that it isn't null
+    3. Introduce the MockBean annotation to autowire the service layer
+    4. Check the NotNull again
+    5. set up the mock
+    6. perform a simple get request and check result is ok
+    7. explore the different methods available like the content type
+    8. perform a request for a get endpoint that accepts path variable or request param
+    9. perform a request for a post endpoint that takes a body
+    10. autowire the object mapper to be used to serialize and deserialize
+    11. introduce the doNothing method of mockito
+    12. perform a request for a post endpoint that accepts file and introduce the multipart
+    13. introduce the andDo(print()) --> from the MockMvcResultHandlers
+    14. Return the results and parse the response
+    15. perform a request for an authenticated endpoint
+
  */
+

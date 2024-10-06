@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 
-
 @Service
 public class RegistrationServiceImpl implements RegistrationService {
 
@@ -35,13 +34,11 @@ public class RegistrationServiceImpl implements RegistrationService {
     public void register(RegistrationDto registrationDto) {
 
         User user = getUser(registrationDto.getUserId());
-
         Event even = getEvent(registrationDto.getEventId());
-
         Ticket ticket = getTicket(registrationDto.getEventId(), registrationDto.getTicketType());
 
         if (ticket.getQuantity() <= 0) {
-           new RuntimeException("there is no available tickets");
+            new RuntimeException("there is no available tickets");
         }
 
         ticket.setQuantity(ticket.getQuantity() - 1);

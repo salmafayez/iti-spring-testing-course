@@ -1,14 +1,12 @@
 package gov.iti.jets.testing.web.dtos;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Setter
 public class RegistrationDto {
     private Long userId;
     private Long eventId;
