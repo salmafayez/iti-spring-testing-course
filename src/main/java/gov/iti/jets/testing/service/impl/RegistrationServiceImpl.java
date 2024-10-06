@@ -60,18 +60,18 @@ public class RegistrationServiceImpl implements RegistrationService {
         return registration;
     }
 
-    private Ticket getTicket(Long id, String tickType) {
+    Ticket getTicket(Long id, String tickType) {
         return ticketRepository
                 .findTicketByTypeAndEvent_Id(TicketType.getByName(tickType), id)
                 .orElseThrow(() -> new RuntimeException("no tickets attached to this event"));
     }
 
-    private Event getEvent(Long id) {
+    Event getEvent(Long id) {
         return eventRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("no event with this id"));
     }
 
-    private User getUser(Long id) {
+    User getUser(Long id) {
         return userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("no user with this id"));
     }
