@@ -38,7 +38,7 @@ public class RegistrationServiceImpl implements RegistrationService {
         Ticket ticket = getTicket(registrationDto.getEventId(), registrationDto.getTicketType());
 
         if (ticket.getQuantity() <= 0) {
-            new RuntimeException("there is no available tickets");
+            throw new RuntimeException("there is no available tickets");
         }
 
         ticket.setQuantity(ticket.getQuantity() - 1);
