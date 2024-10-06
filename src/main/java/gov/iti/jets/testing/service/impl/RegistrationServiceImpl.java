@@ -33,14 +33,21 @@ public class RegistrationServiceImpl implements RegistrationService {
     @Transactional
     public void register(RegistrationDto registrationDto) {
 
+        // test 1
         User user = getUser(registrationDto.getUserId());
+
+        // test 2
         Event even = getEvent(registrationDto.getEventId());
+
+        // test 3
         Ticket ticket = getTicket(registrationDto.getEventId(), registrationDto.getTicketType());
 
+        // test 4
         if (ticket.getQuantity() <= 0) {
-            new RuntimeException("there is no available tickets");
+            throw new RuntimeException("there is no available tickets");
         }
 
+        // test 5
         ticket.setQuantity(ticket.getQuantity() - 1);
         ticketRepository.save(ticket);
 
@@ -48,7 +55,7 @@ public class RegistrationServiceImpl implements RegistrationService {
         registrationRepository.save(registration);
     }
 
-    private static Registration creatRegistration(User user, Event even, Ticket ticket) {
+    public static Registration creatRegistration(User user, Event even, Ticket ticket) {
         Registration registration = Registration
                 .builder()
                 .id(new RegistrationId(user.getId(), even.getId(), ticket.getId()))
@@ -60,18 +67,18 @@ public class RegistrationServiceImpl implements RegistrationService {
         return registration;
     }
 
-    private Ticket getTicket(Long id, String tickType) {
+    public Ticket getTicket(Long id, String tickType) {
         return ticketRepository
                 .findTicketByTypeAndEvent_Id(TicketType.getByName(tickType), id)
                 .orElseThrow(() -> new RuntimeException("no tickets attached to this event"));
     }
 
-    private Event getEvent(Long id) {
+    public Event getEvent(Long id) {
         return eventRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("no event with this id"));
     }
 
-    private User getUser(Long id) {
+    public User getUser(Long id) {
         return userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("no user with this id"));
     }
