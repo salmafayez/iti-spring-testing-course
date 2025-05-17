@@ -1,5 +1,6 @@
 package gov.iti.jets.testing.web.controllers;
 
+import gov.iti.jets.testing.config.TestContainersConfig;
 import gov.iti.jets.testing.config.WebSecurityConfig;
 import gov.iti.jets.testing.service.HelloService;
 import org.assertj.core.api.Assertions;
@@ -17,8 +18,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-@Import(WebSecurityConfig.class)
+//@Import(WebSecurityConfig.class)
 @Transactional
+@Import(value= {TestContainersConfig.class, })
 class HelloControllerWithSpringTest {
 
     @Autowired

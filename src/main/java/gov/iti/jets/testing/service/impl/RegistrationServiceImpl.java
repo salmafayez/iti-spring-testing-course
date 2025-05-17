@@ -29,10 +29,11 @@ public class RegistrationServiceImpl implements RegistrationService {
     @Autowired
     private RegistrationRepository registrationRepository;
 
+    //unit test
     @Override
     @Transactional
     public void register(RegistrationDto registrationDto) {
-
+        //3 prerequeists for the test
         User user = getUser(registrationDto.getUserId());
         Event even = getEvent(registrationDto.getEventId());
         Ticket ticket = getTicket(registrationDto.getEventId(), registrationDto.getTicketType());

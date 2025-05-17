@@ -13,9 +13,11 @@ public class RegistrationController {
 
     @Autowired
     private RegistrationService registrationService;
+
+    //TODO
     @PostMapping("/event/register")
     public ResponseEntity<String> register(@RequestBody RegistrationDto registrationDto) {
         registrationService.register(registrationDto);
-        return ResponseEntity.ok("ddd");
+        return ResponseEntity.ok("success");
     }
 }

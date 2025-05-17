@@ -10,5 +10,6 @@ import lombok.*;
 public class RegistrationDto {
     private Long userId;
     private Long eventId;
+    //add validation
     private String ticketType;
 }

@@ -7,7 +7,7 @@ import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
 @TestConfiguration
-@Testcontainers
+@Testcontainers // container managed by junit will be running during all tests
 public class TestContainersConfig {
 
     @Bean
@@ -15,4 +15,6 @@ public class TestContainersConfig {
     PostgreSQLContainer<?> postgreSQLContainer() {
         return new PostgreSQLContainer<>("postgres:2.0.0");
     }
+
+
 }
