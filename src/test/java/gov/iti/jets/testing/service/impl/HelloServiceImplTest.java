@@ -1,36 +1,64 @@
 package gov.iti.jets.testing.service.impl;
 
 import gov.iti.jets.testing.service.HelloService;
-import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.EnumSource;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
-
 
 class HelloServiceImplTest {
 
-    private HelloService helloService;
+    private HelloService cut;
+
+    HelloServiceImplTest() {
+        System.out.println("from constructor");
+    }
 
     @BeforeEach
-    void setup() {
-        helloService = new HelloServiceImpl();
+    void setUp() {
+        //clean for database
+        this.cut = new HelloServiceImpl();
+    }
+
+    @AfterEach
+    void cleanUp() {
+        System.out.println("after each");
     }
 
     @Test
-    void return_hello_string() {
+    @DisplayName("testing hello method successfully")
+    void test_hello() {
         //Arrange
-
         //Act
-        String helloResponse = helloService.getHello();
+        String result = cut.sayHello();
 
         //Assert
-        assertThat(helloResponse).isEqualTo("Hello");
+        assertThat(result).isEqualTo("Hello");
     }
+
+    @ParameterizedTest
+    @MethodSource(value = "getParameters")
+    void test_parameterized_hello(String name) {
+        //Arrange
+        //Act
+        String result = cut.sayHelloTo(name);
+
+        //Assert
+        assertThat(result).isEqualTo("Hello " + name);
+    }
+
+
+    @Test
+    void test_failure_scenario() {
+        Assertions.assertThrows(RuntimeException.class, () -> cut.throwException());
+    }
+
+    static String[] getParameters() {
+        return new String[]{"ahmed", "moamed"};
+    }
+
 }

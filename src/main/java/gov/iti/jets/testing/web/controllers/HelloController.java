@@ -12,10 +12,14 @@ public class HelloController {
     @Autowired
     private HelloService helloService;
 
+    HelloController(HelloService service) {
+        this.helloService = service;
+    }
+
     @GetMapping("/hello")
-    public ResponseEntity<String> greeting() {
-        String helloResponse = helloService.getHello();
-        return ResponseEntity.ok(helloResponse);
+    public ResponseEntity<String> sayHello() {
+        String response = helloService.sayHello();
+        return ResponseEntity.ok(response);
     }
 
 }

@@ -1,6 +1,10 @@
 package gov.iti.jets.testing.service;
 
 public interface HelloService {
-    String getHello();
+    String sayHello();
+
+    String sayHelloTo(String name);
+
+    void throwException();
 }
 
