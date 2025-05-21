@@ -17,7 +17,7 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     @Autowired
-    private FileService fileService
+    private FileService fileService;
 
     @Override
     public List<User> getAll() {
@@ -37,15 +37,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void addUserPhoto(Long id, MultipartFile image) {
-        //some sort of login
-
-
-        //
-
-
-        //
-       fileService.saveFile(null, null)
-        //return
     }
 
     @Override
