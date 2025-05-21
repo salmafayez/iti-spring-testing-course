@@ -1,5 +1,6 @@
 package gov.iti.jets.testing.service.impl;
 
+import gov.iti.jets.testing.service.FileService;
 import gov.iti.jets.testing.service.UserService;
 import gov.iti.jets.testing.domain.User;
 import gov.iti.jets.testing.persistence.UserRepository;
@@ -14,6 +15,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private FileService fileService
 
     @Override
     public List<User> getAll() {
@@ -33,7 +37,15 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void addUserPhoto(Long id, MultipartFile image) {
+        //some sort of login
 
+
+        //
+
+
+        //
+       fileService.saveFile(null, null)
+        //return
     }
 
     @Override

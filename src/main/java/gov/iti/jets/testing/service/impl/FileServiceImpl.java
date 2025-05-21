@@ -24,7 +24,7 @@ public class FileServiceImpl implements FileService {
 
     public FileServiceImpl(RestTemplateBuilder restTemplateBuilder) {
         this.restTemplate = restTemplateBuilder
-                .rootUri("https://media-server-url")
+//                .rootUri("https://media-server-url/save")
                 .connectTimeout(Duration.ofSeconds(2))
                 .readTimeout(Duration.ofSeconds(2))
                 .build();

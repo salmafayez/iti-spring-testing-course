@@ -5,16 +5,16 @@ import org.springframework.boot.testcontainers.service.connection.ServiceConnect
 import org.springframework.context.annotation.Bean;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Testcontainers;
+import org.testcontainers.utility.DockerImageName;
 
-@TestConfiguration
-@Testcontainers // container managed by junit will be running during all tests
+@TestConfiguration(proxyBeanMethods = false)
+//@Testcontainers
 public class TestContainersConfig {
 
     @Bean
     @ServiceConnection
     PostgreSQLContainer<?> postgreSQLContainer() {
-        return new PostgreSQLContainer<>("postgres:2.0.0");
+        return new PostgreSQLContainer<>(DockerImageName.parse("postgres:latest"));
     }
-
 
 }

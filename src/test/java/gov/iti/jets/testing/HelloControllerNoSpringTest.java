@@ -1,6 +1,7 @@
-package gov.iti.jets.testing.web.controllers;
+package gov.iti.jets.testing;
 
 import gov.iti.jets.testing.service.HelloService;
+import gov.iti.jets.testing.web.controllers.HelloController;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

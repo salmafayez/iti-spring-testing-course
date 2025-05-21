@@ -1,15 +1,11 @@
-package gov.iti.jets.testing.web.controllers;
+package gov.iti.jets.testing;
 
 import gov.iti.jets.testing.config.TestContainersConfig;
-import gov.iti.jets.testing.config.WebSecurityConfig;
-import gov.iti.jets.testing.service.HelloService;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
-import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;

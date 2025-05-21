@@ -4,6 +4,7 @@ import gov.iti.jets.testing.domain.User;
 import gov.iti.jets.testing.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -42,6 +43,7 @@ public class UserController {
     }
 
     @DeleteMapping("/private/users/{id}")
+    @PreAuthorize("DELETE_AUTHORITY")
     public ResponseEntity<String> deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);
         return ResponseEntity.ok("deleted successfully");
